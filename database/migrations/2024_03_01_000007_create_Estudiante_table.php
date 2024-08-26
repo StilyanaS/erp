@@ -24,7 +24,7 @@ class CreateEstudianteTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('ID_Estudiante');
+            $table->increments('id');
             $table->string('Nombre', 45)->nullable();
             $table->string('Apellido', 45)->nullable();
             $table->date('Fecha_Nacimiento')->nullable();
@@ -36,7 +36,7 @@ class CreateEstudianteTable extends Migration
             $table->date('Fecha_Ingreso')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
-            $table->unique(["ID_Estudiante"], 'ID_Estudiante_UNIQUE');
+            $table->unique(["id"], 'ID_Estudiante_UNIQUE');
         });
     }
 

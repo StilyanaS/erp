@@ -15,6 +15,12 @@ class EstudianteController extends Controller
 
         return view('estudiantes', compact('estudiante'));
     }
+    public function studentsJson()
+    {
+        $estudiantes = Estudiante::all();
+
+        return response()->json($estudiantes);
+    }
 
     public function create()
     {
@@ -28,9 +34,18 @@ class EstudianteController extends Controller
         return redirect()->route('exito');
     }
 
-    public function show(Estudiante $estudiante)
+    public function storeStudent(Request $request)
     {
-        return view('estudiantes.show', compact('estudiante'));
+        dd('post api called');
+        /*$student = Estudiante::create($request->all());
+        return response($student, 201);*/
+    }
+
+    public function show($id)
+    {
+        Session::put('id', $id);
+        $student = Estudiante::findId($id);
+        return response()->json($student);
     }
 
     public function edit(Estudiante $estudiante)
