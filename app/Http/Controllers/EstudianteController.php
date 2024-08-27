@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\insertStudent;
 use App\Models\Estudiante;
 use Illuminate\Support\Facades\Session;
 use  Illuminate\Http\Request;
@@ -34,11 +35,12 @@ class EstudianteController extends Controller
         return redirect()->route('exito');
     }
 
-    public function storeStudent(Request $request)
+    public function storeStudent(insertStudent $request)
     {
-        dd('post api called');
+        //dd('post api called');
         /*$student = Estudiante::create($request->all());
-        return response($student, 201);*/
+        return response() -> json($student);*/
+        return response()->json(['mensaje' => 'hola']);
     }
 
     public function show($id)
@@ -46,6 +48,11 @@ class EstudianteController extends Controller
         Session::put('id', $id);
         $student = Estudiante::findId($id);
         return response()->json($student);
+    }
+
+    public function test()
+    {
+        return response()->json(['mensaje' => 'hola']);
     }
 
     public function edit(Estudiante $estudiante)

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstudianteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('new-student', [EstudianteController::class, 'storeStudent']);
+Route::get('/showStudent/{id}', [EstudianteController::class, 'show']);
+Route::get('/test', ([EstudianteController::class, 'test']));

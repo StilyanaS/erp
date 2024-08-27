@@ -34,8 +34,7 @@ Route::post('/updatedStudent', [EstudianteController::class, 'updatedStudent'])-
 Route::get('/studentDetail', [EstudianteController::class, 'studentDetail'])->name('studentDetail');
 
 Route::get('/studentsJson', [EstudianteController::class,'studentsJson']);
-Route::get('/showStudent/{id}', [EstudianteController::class, 'show']);
-Route::post('/newStudent', [EstudianteController::class, 'storeStudent']);
+
 Route::get('/csrf-token', function () {
     return response()->json(['csrfToken' => csrf_token()]);
 });
