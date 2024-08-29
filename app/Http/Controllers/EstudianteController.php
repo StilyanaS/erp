@@ -38,9 +38,9 @@ class EstudianteController extends Controller
     public function storeStudent(insertStudent $request)
     {
         //dd('post api called');
-        /*$student = Estudiante::create($request->all());
-        return response() -> json($student);*/
-        return response()->json(['mensaje' => 'hola']);
+        $student = Estudiante::create($request->all());
+        return response() -> json($student);
+
     }
 
     public function show($id)

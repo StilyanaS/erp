@@ -22,3 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('new-student', [EstudianteController::class, 'storeStudent']);
 Route::get('/showStudent/{id}', [EstudianteController::class, 'show']);
 Route::get('/test', ([EstudianteController::class, 'test']));
+
+Route::get('/csrf-token', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
+});
+Route::get('/csrf-cookie', function () {
+    return response()->json(['csrf-token' => csrf_token()]);
+})->middleware('web');
+

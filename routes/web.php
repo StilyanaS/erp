@@ -35,10 +35,4 @@ Route::get('/studentDetail', [EstudianteController::class, 'studentDetail'])->na
 
 Route::get('/studentsJson', [EstudianteController::class,'studentsJson']);
 
-Route::get('/csrf-token', function () {
-    return response()->json(['csrfToken' => csrf_token()]);
-});
-Route::get('/csrf-cookie', function () {
-    return response()->json(['csrf-token' => csrf_token()]);
-})->middleware('web');
 
