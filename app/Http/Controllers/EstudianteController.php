@@ -93,4 +93,13 @@ class EstudianteController extends Controller
 
         return redirect()->route('estudiantes.index');
     }
+
+    public function deleteStudent($id)
+{
+    $estudiante = Estudiante::findOrFail($id);
+
+    $estudiante->delete();
+
+    return response()->json(['message' => 'Estudiante eliminado correctamente'], 200);
+}
 }

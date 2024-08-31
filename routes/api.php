@@ -3,6 +3,7 @@
 use App\Http\Controllers\EstudianteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EstudianteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::get('/csrf-cookie', function () {
     return response()->json(['csrf-token' => csrf_token()]);
 })->middleware('web');
 
+Route::middleware('auth:sanctum')->delete('/estudiantes/{id}', [EstudianteController::class, 'deleteStudent']);
