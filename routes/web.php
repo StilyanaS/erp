@@ -31,8 +31,6 @@ Route::get('/exito', function(){ return view('creado');})-> name('exito');
 Route::get('/updateStudent/{id}', [EstudianteController::class, 'updateStudent'])->name('updateStudent');
 Route::get('/studentDetail/{id}', [EstudianteController::class, 'show']);
 Route::post('/updatedStudent', [EstudianteController::class, 'updatedStudent'])->name('updatedStudent');
-Route::get('/studentDetail', [EstudianteController::class, 'studentDetail'])->name('studentDetail');
 
-Route::get('/studentsJson', [EstudianteController::class,'studentsJson']);
 
 
