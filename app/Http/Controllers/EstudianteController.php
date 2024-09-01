@@ -90,11 +90,10 @@ class EstudianteController extends Controller
         return view('studentDetail', compact('student'));
     }
 
-    public function destroy(Estudiante $estudiante)
+    public function destroy($id)
     {
-        $estudiante->delete();
-
-        return redirect()->route('estudiantes.index');
+        $student = Estudiante::findId($id);
+        $student->delete();
     }
 
     public function deleteStudent($id)

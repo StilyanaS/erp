@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Docente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class DocenteController extends Controller
 {
@@ -36,11 +38,27 @@ class DocenteController extends Controller
         return view('docentes.edit', compact('docente'));
     }
 
-    public function update(Request $request, Docente $docente)
+    public function update(Request $request, $id)
     {
+        $docente = Docente::find($id);
+        if (is_null($docente)) {
+            return response()->json(['message' => 'El docente no existe'], 404);
+        }
         $docente->update($request->all());
+        return response($docente, 200);
+    }
 
-        return redirect()->route('docentes.index');
+    public function updateTeacher($id)
+    {
+        $teacher = Docente::findId($id);
+        Session::put('id', $id);
+        return view('updateTeacher', compact('teacher'));
+    }
+    public function updatedTeacher(Request $request)
+    {
+        $id = Session::get('id');
+        Docente::updatedStudent($id, $request);
+        return Redirect::to('/teacherDetail');
     }
 
     public function destroy(Docente $docente)

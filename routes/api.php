@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,10 @@ Route::get('/csrf-cookie', function () {
 })->middleware('web');
 
 Route::middleware('auth:sanctum')->delete('/estudiantes/{id}', [EstudianteController::class, 'deleteStudent']);
+
+Route::get('/delete-student/{id}', [EstudianteController::class, 'destroy']);
+
+Route::post('new-teacher', [DocenteController::class, 'storeTeacher']);
+Route::get('/showTeacher/{id}', [DocenteController::class, 'show']);
+Route::get('/teachersJson', [DocenteController::class, 'teachersJson']);
+Route::middleware('auth:sanctum')->delete('/docentes/{id}', [DocenteController::class, 'deleteTeacher']);
