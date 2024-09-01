@@ -60,10 +60,13 @@ class EstudianteController extends Controller
         return view('estudiantes.edit', compact('estudiante'));
     }
 
-    public function update(Request $request, Estudiante $estudiante)
+    public function update(Request $request, $id)
     {
+        $estudiante = Estudiante::find($id);
+        if (is_null($estudiante)) {
+            return response()-> json(['message' => 'El estudiante no existe'], 404);
+        }
         $estudiante->update($request->all());
-
         return response($estudiante, 200);
     }
 

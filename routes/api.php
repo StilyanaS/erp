@@ -15,14 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('new-student', [EstudianteController::class, 'storeStudent']);
 Route::get('/showStudent/{id}', [EstudianteController::class, 'show']);
 Route::get('/studentsJson', [EstudianteController::class, 'studentsJson']);
-Route::get('/update-student/{id}', [EstudianteController::class, 'updateStudent']);
+Route::put('/update-student/{id}', [EstudianteController::class, 'update']);
 Route::get('/csrf-token', function () {
     return response()->json(['csrfToken' => csrf_token()]);
 });
