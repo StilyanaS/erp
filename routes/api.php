@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
+use App\Models\Docente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::get('/csrf-cookie', function () {
 Route::middleware('auth:sanctum')->delete('/estudiantes/{id}', [EstudianteController::class, 'deleteStudent']);
 
 Route::get('/delete-student/{id}', [EstudianteController::class, 'destroy']);
+Route::get('/delete-teacher/{id}', [DocenteController::class, 'destroy']);
 
 Route::post('new-teacher', [DocenteController::class, 'storeTeacher']);
 Route::get('/showTeacher/{id}', [DocenteController::class, 'show']);
