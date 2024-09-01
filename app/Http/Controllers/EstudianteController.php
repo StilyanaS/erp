@@ -64,7 +64,7 @@ class EstudianteController extends Controller
     {
         $estudiante->update($request->all());
 
-        return redirect()->route('estudiantes.index');
+        return response($estudiante, 200);
     }
 
     public function updateStudent($id)
